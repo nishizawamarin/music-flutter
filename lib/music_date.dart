@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 10,),
             Container(
-              height: 400,
+              height: 250,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: musicData.length,
@@ -124,30 +124,38 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 20,),
-
-            const Text('カテゴリー',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 30,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-
-            const SizedBox(height: 10,),
-            const  Spacer(),
-            const Icon(Icons.arrow_forward_ios,color: Colors.white,),
-            const SizedBox(width: 20,),
-            GridView.count(
-              scrollDirection: Axis.horizontal,
-              crossAxisCount: 2,
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildCategoryTile('クラシック',Colors.purple,Colors.deepPurple),
-                _buildCategoryTile('ポップ',Colors.pinkAccent,Colors.pink),
-                _buildCategoryTile('ジャズ',Colors.lightGreenAccent,Colors.lightGreen),
-                _buildCategoryTile('カントリー',Colors.yellow,Colors.brown),
-                _buildCategoryTile('ロック',Colors.lightBlue,Colors.blue),
-                _buildCategoryTile('パンク',Colors.redAccent,Colors.red),
+                 SizedBox(width: 20,),
+                   Text('カテゴリー',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.w600,
+                    ),
+                ),
+                Spacer(),
+                Icon(Icons.arrow_forward_ios,color: Colors.white,),
+                SizedBox(width: 20,),
               ],
+            ),
+            const SizedBox(height: 10,),
+            SizedBox(
+              height: 250,
+              width: 400,
+              child: GridView.count(
+                scrollDirection: Axis.horizontal,
+                crossAxisCount: 2,
+                children: [
+                  _buildCategoryTile('クラシック',Colors.purple,Colors.deepPurple),
+                  _buildCategoryTile('ポップ',Colors.pinkAccent,Colors.pink),
+                  _buildCategoryTile('ジャズ',Colors.lightGreenAccent,Colors.lightGreen),
+                  _buildCategoryTile('カントリー',Colors.yellow,Colors.brown),
+                  _buildCategoryTile('ロック',Colors.lightBlue,Colors.blue),
+                  _buildCategoryTile('パンク',Colors.redAccent,Colors.red),
+                ],
+              ),
             ),
 
           ],
@@ -159,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _buildCategoryTile(String categoryName,Color startColor, Color endColor){
     return Container(
       height: 100,
-      width: 180,
+      width: 200,
       margin: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: Colors.blue,
