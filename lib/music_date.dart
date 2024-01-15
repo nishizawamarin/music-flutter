@@ -37,26 +37,30 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color(0xff383c3c),
         items: const [
           BottomNavigationBarItem(
-              icon:Icon(Icons.home_outlined,color: Colors.white,),
+              icon:Icon(Icons.home,),
               label: 'ホーム'
           ),
           BottomNavigationBarItem(
-              icon:Icon(Icons.search,color: Colors.white,),
+              icon:Icon(Icons.search,),
               label: '検索'
           ),
           BottomNavigationBarItem(
-              icon:Icon(Icons.playlist_play,color: Colors.white,),
+              icon:Icon(Icons.playlist_play,),
               label: 'プレイリスト'
           ),
           BottomNavigationBarItem(
-              icon:Icon(Icons.account_circle_outlined,color: Colors.white,),
+              icon:Icon(Icons.account_circle_outlined,),
               label: 'アカウント'
           ),
         ],
-        backgroundColor:Colors.black,
-
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
       ),
       backgroundColor: const Color(0xff383c3c),
       body:   Center(
@@ -88,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   itemCount: musicData.length,
                   itemBuilder: (context,  index) {
                     return GestureDetector(
-                      onTap: () {Navigator.push(context, MaterialPageRoute(builder:(context)=>const musicplayer()));
+                      onTap: () {Navigator.push(context, MaterialPageRoute(builder:(context)=>Musicplayer(musicDate: musicData,selectedIndex: index,)));
                       },
                       child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -142,17 +146,17 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 10,),
             SizedBox(
-              height: 250,
-              width: 400,
+              height: 200,
               child: GridView.count(
                 scrollDirection: Axis.horizontal,
                 crossAxisCount: 2,
+                childAspectRatio: 2/3,
                 children: [
-                  _buildCategoryTile('クラシック',Colors.purple,Colors.deepPurple),
-                  _buildCategoryTile('ポップ',Colors.pinkAccent,Colors.pink),
-                  _buildCategoryTile('ジャズ',Colors.lightGreenAccent,Colors.lightGreen),
+                  _buildCategoryTile('クラシック',Colors.purpleAccent,Colors.deepPurple),
                   _buildCategoryTile('カントリー',Colors.yellow,Colors.brown),
+                  _buildCategoryTile('ポップ',Colors.pinkAccent,Colors.pink),
                   _buildCategoryTile('ロック',Colors.lightBlue,Colors.blue),
+                  _buildCategoryTile('ジャズ',Colors.lightGreenAccent,Colors.lightGreen),
                   _buildCategoryTile('パンク',Colors.redAccent,Colors.red),
                 ],
               ),
